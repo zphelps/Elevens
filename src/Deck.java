@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deck {
 
@@ -8,21 +9,32 @@ public class Deck {
         reset(); // Populates the deck
     }
 
-    /**
-     * UNIMPLEMENTED
-     * Shuffles the deck.
-     */
+
     public void shuffle() {
-
+        Collections.shuffle(deck);
     }
-
-    /**
-     * UNIMPLEMENTED
-     * Resets and populates the deck.
-     */
+    
     public void reset() {
         deck = new ArrayList<>();
-        // Populate deck
+        for (int i =1; i<=4; i++){
+            for (int j = 1; j<=13; j++){
+                char suit;
+                if (i==1){
+                    suit = 'D';
+                }
+                if (i==2){
+                    suit = 'C';
+                }
+                if (i==3){
+                    suit = 'S';
+                }
+                else{
+                    suit = 'H';
+                }
+                Card c = new Card(j,suit);
+                deck.add(c);
+            }
+        }
     }
 
     /**
@@ -31,7 +43,9 @@ public class Deck {
      * @return the next card from the top of the deck
      */
     public Card getNextCard() {
-        return null;
+        Card c = deck.get(0);
+        deck.remove(0);
+        return c;
     }
 
     /**
@@ -40,7 +54,7 @@ public class Deck {
      * @return the number of cards remaining in the deck.
      */
     public int cardsLeft() {
-        return -1;
+        return deck.size();
     }
 
 }

@@ -9,14 +9,13 @@ public class Card {
         value = inValue;
         suit = inSuit;
 
-        /* pseudocode from design doc~
-        if (1 <= value || 9 <= value) rank = String(value).charAt(0);
-        else if (value == 10) rank = ‘T’
-        else if () …
-        else if (value == 13) rank = ‘K’
-        else rank = ‘?’ //fail case that shouldn’t run anyway
-        */
 
+        if (2 <= value || 9 <= value) rank = (char)value;
+        else if (value == 10) rank = 'T';
+        else if (value == 11) rank = 'J';
+        else if (value == 12) rank = 'Q';
+        else if (value == 13) rank = 'K';
+        else rank = 'A';
     }
 
     public int getValue() {
@@ -33,7 +32,8 @@ public class Card {
 
     //UNIMPLEMENTED: should return in the form "9H", "KC", etc.
     public String toString() {
-        return "";
+        String s = rank + suit + "";
+        return s;
     }
 
 }
