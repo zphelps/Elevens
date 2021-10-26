@@ -14,7 +14,7 @@ public class Driver {
                 String move = "";
 
                 while(true) {
-                    System.out.println("Move? ");
+                    System.out.print("Move? ");
                     move = s1.nextLine();
 
                     if(!b1.move(move)) {
