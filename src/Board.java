@@ -84,8 +84,57 @@ public class Board {
 
         }
 
-        // 2-CARD REMOVAL ---------------------
+        // 2-CARD REMOVAL ----------------------------------------------------------------------------------------------
         if (input.length() == 2) {
+            // Input check ---------------------------------------------------------------------------------------------
+            // Currently unsafe, should probably make it safe later!
+            int value1 = -1;
+            int value2 = -1;
+
+            if (input.charAt(0) == 'T') value1 = 10;
+            else if (input.charAt(0) == 'A') value1 = 1;
+            else value1 = Integer.parseInt(input.substring(0, 1));
+
+            if (input.charAt(1) == 'T') value2 = 10;
+            else if (input.charAt(1) == 'A') value2 = 1;
+            else value2 = Integer.parseInt(input.substring(1, 2));
+
+            if (value1 + value2 != 11) return false;
+
+            // Search for cards ----------------------------------------------------------------------------------------
+            // Using x and y to avoid confusion with different meanings of j
+
+            boolean v1Found = false;
+            int[] v1Coords = new int[]{-1, -1};
+
+            boolean v2Found = false;
+            int[] v2Coords = new int[]{-1, -1};
+
+            for (int x = 0; x < 3; x++) {
+                for (int y = 0; y < 3; y++) {
+                    if (board[x][y].value == value1) {
+                        v1Coords[0] = x;
+                        v1Coords[1] = y;
+                        v1Found = true;
+                    }
+                    if (board[x][y].value == value2) {
+                        v2Coords[0] = x;
+                        v2Coords[1] = y;
+                        v2Found = true;
+                    }
+                }
+            }
+
+            if (!v1Found || !v2Found) return false;
+
+            // Make the move -------------------------------------------------------------------------------------------
+            if (deck.cardsLeft() > 0) board[v1Coords[0]][v1Coords[1]] = deck.getNextCard();
+            else board[v1Coords[0]][v1Coords[1]] = null;
+
+            if (deck.cardsLeft() > 0) board[v2Coords[0]][v2Coords[1]] = deck.getNextCard();
+            else board[v2Coords[0]][v2Coords[1]] = null;
+
+            return true;
 
         }
 
