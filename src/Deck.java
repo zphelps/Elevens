@@ -9,7 +9,6 @@ public class Deck {
         reset(); // Populates the deck
     }
 
-
     public void shuffle() {
         Collections.shuffle(deck);
     }
@@ -38,7 +37,6 @@ public class Deck {
     }
 
     /**
-     * UNIMPLEMENTED
      * Removes the next card from the top of the deck and returns it.
      * @return the next card from the top of the deck
      */
@@ -49,7 +47,6 @@ public class Deck {
     }
 
     /**
-     * UNIMPLEMENTED
      * Returns the number of cards remaining in the deck.
      * @return the number of cards remaining in the deck.
      */
