@@ -9,14 +9,14 @@ public class Card {
         value = inValue;
         suit = inSuit;
 
-
-        if (2 <= value || 9 >= value) rank = (char)value;
+        if (2 <= value && value <= 9) rank = Integer.toString(value).charAt(0);
         else if (value == 10) rank = 'T';
         else if (value == 11) rank = 'J';
         else if (value == 12) rank = 'Q';
         else if (value == 13) rank = 'K';
         else if (value == 1) rank = 'A';
         else rank = '?';
+
     }
 
     public int getValue() {
@@ -33,8 +33,7 @@ public class Card {
 
     // Returns in the form "9H", "KC", etc.
     public String toString() {
-        String s = rank + suit + "";
-        return s;
+        return "" + rank + suit;
     }
 
 }
