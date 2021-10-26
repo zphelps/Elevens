@@ -23,8 +23,64 @@ public class Board {
      */
     public boolean move (String input) {
 
-        // 3-CARD REMOVAL ---------------------
+        // 3-CARD REMOVAL ----------------------------------------------------------------------------------------------
         if (input.length() == 3) {
+
+            // Input check ---------------------------------------------------------------------------------------------
+            boolean jFound = false;
+            boolean qFound = false;
+            boolean kFound = false;
+
+            for (int i = 0; i < input.length(); i++) {
+                if (input.charAt(i) == 'J') jFound = true;
+                if (input.charAt(i)  == 'Q') qFound = true;
+                if (input.charAt(i)  == 'K') kFound = true;
+            }
+
+            if (!(jFound && qFound && kFound)) return false;
+
+            jFound = false;
+            qFound = false;
+            kFound = false;
+            int[] jCoords = new int[]{-1, -1};
+            int[] qCoords = new int[]{-1, -1};
+            int[] kCoords = new int[]{-1, -1};
+
+            // Search for cards ----------------------------------------------------------------------------------------
+            // Using x and y to avoid confusion with different meanings of j
+            for (int x = 0; x < 3; x++) {
+                for (int y = 0; y < 3; y++) {
+                    if (board[x][y].rank == 'J') {
+                        jCoords[0] = x;
+                        jCoords[1] = y;
+                        jFound = true;
+                    }
+                    if (board[x][y].rank == 'Q') {
+                        qCoords[0] = x;
+                        qCoords[1] = y;
+                        qFound = true;
+                    }
+                    if (board[x][y].rank == 'K') {
+                        kCoords[0] = x;
+                        kCoords[1] = y;
+                        kFound = true;
+                    }
+                }
+            }
+
+            if (!(jFound && qFound && kFound)) return false;
+
+            // Make the move -------------------------------------------------------------------------------------------
+            if (deck.cardsLeft() > 0) board[jCoords[0]][jCoords[1]] = deck.getNextCard();
+            else board[jCoords[0]][jCoords[1]] = null;
+
+            if (deck.cardsLeft() > 0) board[qCoords[0]][qCoords[1]] = deck.getNextCard();
+            else board[qCoords[0]][qCoords[1]] = null;
+
+            if (deck.cardsLeft() > 0) board[kCoords[0]][kCoords[1]] = deck.getNextCard();
+            else board[kCoords[0]][kCoords[1]] = null;
+
+            return true;
 
         }
 
@@ -89,7 +145,8 @@ public class Board {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                out.append(board[i][j].rank);
+                if (board[i][j] != null) out.append(board[i][j].rank);
+                else out.append("-");
                 if (j != 2) out.append(" ");
             }
             if (i != 2) out.append("\n");
