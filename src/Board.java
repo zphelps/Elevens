@@ -158,29 +158,28 @@ public class Board {
      */
     public boolean areMovesLeft() {
 
-        // Indices for this are off by one from actual values.
-        // Be careful when editing.
-        int[] found = new int[13];
+        // For ease of use, index 0 goes unused.
+        int[] found = new int[14];
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (board[i][j] != null) {
-                    if (board[i][j].value == 10) found[9]++;
-                    else if (board[i][j].value == 11) found[10]++;
-                    else if (board[i][j].value == 12) found[11]++;
-                    else if (board[i][j].value == 13) found[12]++;
-                    else found[board[i][j].value-1]++;
+                    found[board[i][j].value]++;
                 }
             }
         }
 
         // Two-pair checks
-        for (int i = 0; i <= 4; i++) {
-            if (found[i] > 0 && found[9-i] > 0) return true;
+        for (int i = 1; i <= 5; i++) {
+            if (found[i] > 0 && found[11-i] > 0) {
+                return true;
+            }
         }
 
         // Three-pair checks
-        if (found[10] > 0 && found[11] > 0 && found[12] > 0) return true;
+        if (found[11] > 0 && found[12] > 0 && found[13] > 0) {
+            return true;
+        }
 
         return false;
 
