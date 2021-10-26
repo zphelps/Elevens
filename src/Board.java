@@ -50,20 +50,22 @@ public class Board {
             // Using x and y to avoid confusion with different meanings of j
             for (int x = 0; x < 3; x++) {
                 for (int y = 0; y < 3; y++) {
-                    if (board[x][y].rank == 'J') {
-                        jCoords[0] = x;
-                        jCoords[1] = y;
-                        jFound = true;
-                    }
-                    if (board[x][y].rank == 'Q') {
-                        qCoords[0] = x;
-                        qCoords[1] = y;
-                        qFound = true;
-                    }
-                    if (board[x][y].rank == 'K') {
-                        kCoords[0] = x;
-                        kCoords[1] = y;
-                        kFound = true;
+                    if (board[x][y] != null) {
+                        if (board[x][y].rank == 'J') {
+                            jCoords[0] = x;
+                            jCoords[1] = y;
+                            jFound = true;
+                        }
+                        if (board[x][y].rank == 'Q') {
+                            qCoords[0] = x;
+                            qCoords[1] = y;
+                            qFound = true;
+                        }
+                        if (board[x][y].rank == 'K') {
+                            kCoords[0] = x;
+                            kCoords[1] = y;
+                            kFound = true;
+                        }
                     }
                 }
             }
