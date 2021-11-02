@@ -6,6 +6,7 @@ public class Driver {
 
         Scanner s1 = new Scanner(System.in);
         Board b1 = new Board();
+
         System.out.print("Enter game mode (1=human, 2=computer): ");
         int gameMode = s1.nextInt();
 
@@ -51,6 +52,7 @@ public class Driver {
 
                     //Computer Moves
                     //Implement method to get possible move in Board
+                    //Return as a string
 
                 }
 
