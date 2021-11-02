@@ -7,8 +7,9 @@ public class Driver {
         Scanner s1 = new Scanner(System.in);
         Board b1 = new Board();
 
-        System.out.print("Enter game mode (1=human, 2=computer): ");
+        System.out.print("Enter game mode (1 = human, 2 = computer): ");
         int gameMode = s1.nextInt();
+        s1.nextLine();
 
         if (gameMode==1) {
             while (true) {
