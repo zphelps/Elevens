@@ -20,7 +20,7 @@ public class Driver {
 
                     while (true) {
                         System.out.print("Move? ");
-                        move = s1.nextLine().toUpperCase();
+                        move = s1.nextLine();
 
                         if (!b1.move(move)) {
                             System.out.print("Illegal move, try again. ");
@@ -54,6 +54,8 @@ public class Driver {
                     //Computer Moves
                     //Implement method to get possible move in Board
                     //Return as a string
+
+                    System.out.println("Computer move: " + Computer.getMove(b1));
 
                 }
 

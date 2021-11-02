@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Board {
 
     Deck deck;
@@ -225,6 +228,18 @@ public class Board {
                 board[i][j] = deck.getNextCard();
             }
         }
+    }
+
+    public ArrayList<String> getCardsOnBoard() {
+        ArrayList<String> toReturn = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] != null) toReturn.add(Character.toString(board[i][j].rank));
+            }
+        }
+
+        return toReturn;
     }
 
 }
