@@ -35,12 +35,13 @@ public class Driver {
                 System.out.println("Sorry, there are no moves left.");
             }
 
-            System.out.println("Play again? (Y/N)");
+            System.out.println("Play again? (y/N)");
             String playAgain = s1.nextLine().toUpperCase();
 
             if (playAgain.equals("N")) {
                 break;
             }
+            b1.reset();
         }
 
     }
