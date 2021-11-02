@@ -16,7 +16,6 @@ public class Board {
     }
 
     /**
-     * UNIMPLEMENTED
      * Makes a move based on player input.
      * @param input the user's raw input, in the form "29", "1T", "JQK", etc.
      * @return false if the move was invalid and was not made, true otherwise.
@@ -95,11 +94,17 @@ public class Board {
 
             if (input.charAt(0) == 'T') value1 = 10;
             else if (input.charAt(0) == 'A') value1 = 1;
-            else value1 = Integer.parseInt(input.substring(0, 1));
+            else if ('0' <= input.charAt(0) && input.charAt(0) <= '9'){
+                value1 = Integer.parseInt(input.substring(0, 1));
+            }
+            else return false;
 
             if (input.charAt(1) == 'T') value2 = 10;
             else if (input.charAt(1) == 'A') value2 = 1;
-            else value2 = Integer.parseInt(input.substring(1, 2));
+            else if ('0' <= input.charAt(1) && input.charAt(1) <= '9'){
+                value2 = Integer.parseInt(input.substring(1, 2));
+            }
+            else return false;
 
             if (value1 + value2 != 11) return false;
 
